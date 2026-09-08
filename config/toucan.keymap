@@ -154,7 +154,7 @@
         nav {
             display-name = "NAV";
             bindings = <
-                &trans     &kp PRINT  &kp PSCRN    &kp UP       &trans       &kp PG_UP   &kp PLUS   &kp N7    &kp N8  &kp N9    &kp C_FF      &trans
+                &trans     &kp PSCRN  &kp SLCK     &kp UP       &trans       &kp PG_UP   &kp PLUS   &kp N7    &kp N8  &kp N9    &kp C_FF      &trans
                 &trans     &kp INSERT &kp LEFT     &kp DOWN     &kp RIGHT    &kp PG_DN   &kp MINUS  &kp N4    &kp N5  &kp N6    &kp C_RW      &trans
                 &trans     &kp CAPS   &kp ESC      &kp DEL      &kp HOME     &kp END     &kp N0     &kp N1    &kp N2  &kp N3    &kp C_SHUFFLE &trans
                                       &kp TAB     &kp SPACE       &trans      &trans  &kp RET   &kp BSPC
