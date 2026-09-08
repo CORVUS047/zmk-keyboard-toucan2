@@ -164,9 +164,9 @@
         sym {
             display-name = "SYM";
             bindings = <
-                &trans   &kp C_NEXT &kp C_VOL_UP &kp LBRK &kp RBRK &kp EXCL   &kp TILDE &kp DLLR  &kp UNDER  &kp CARET &kp LT    &trans
-                &trans   &kp C_PP   &kp C_MUTE   &kp LBRC &kp RBRC &kp PIPE   &kp STAR  &kp AT    &kp HASH   &kp BSLH  &kp EQUAL &trans
-                &trans   &kp C_PREV &kp C_VOL_DN &kp LPAR &kp RPAR &kp AMPS   &kp PRCNT &kp SQT   &kp DQT    &kp GRAVE &kp GT    &trans
+                &trans   &kp C_NEXT &kp C_VOL_UP &kp LBRK &kp RBRK &kp EXCL   &kp TILDE &kp DOLLAR &kp UNDER  &kp CARET &kp LT    &trans
+                &trans   &kp C_PP   &kp C_MUTE   &kp LBRC &kp RBRC &kp PIPE   &kp STAR  &kp AT     &kp HASH   &kp BSLH  &kp EQUAL &trans
+                &trans   &kp C_PREV &kp C_VOL_DN &kp LPAR &kp RPAR &kp AMPS   &kp PRCNT &kp SQT    &kp DQT    &kp GRAVE &kp GT    &trans
                                              &kp TAB &kp SPACE  &trans               &trans   &kp RET    &kp BSPC
             >;
         };
