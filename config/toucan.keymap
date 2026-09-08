@@ -24,12 +24,12 @@
         shift_ctrl_c: shift_ctrl_c {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_tap &kp C>, <&macro_release &kp RCTRL>, <&macro_ release &kp RSHIFT>;
+            bindings = <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_tap &kp C>, <&macro_release &kp RCTRL>, <&macro_release &kp RSHIFT>;
         };
         shift_ctrl_v: shift_ctrl_v {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_tap &kp V>, <&macro_release &kp RCTRL>, <&macro_ release &kp RSHIFT>;
+            bindings = <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_tap &kp V>, <&macro_release &kp RCTRL>, <&macro_release &kp RSHIFT>;
         };
         t_t: t_t {
             compatible = "zmk,behavior-macro";
