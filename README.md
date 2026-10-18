@@ -23,11 +23,11 @@ The outermost column on each half is `&trans` on every layer — those positions
 | 0 | BASE  | default |
 | 1 | NAV   | hold left inner thumb |
 | 2 | SYM   | hold right inner thumb |
-| 3 | GAME  | double-tap `D` |
+| 3 | GAME  | triple-tap `D` |
 | 4 | GNUM  | hold left inner thumb while on GAME, or touch the trackpad |
-| 5 | RES1  | double-tap `C` (reserved, unmapped) |
-| 6 | RES2  | double-tap `H` (reserved, unmapped) |
-| 7 | RES3  | double-tap `,` (reserved, unmapped) |
+| 5 | RES1  | triple-tap `C` (reserved, unmapped) |
+| 6 | RES2  | triple-tap `H` (reserved, unmapped) |
+| 7 | RES3  | triple-tap `,` (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
 Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` — a single tap gets you back to BASE
@@ -35,17 +35,23 @@ Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` —
 
 ## BASE
 
-Colemak-DH. The bottom row holds mods — `Z X C D` / `H , . /` give GUI / CTRL / ALT / SHIFT — and
-**triple-tap** for Bluetooth profile switching (`BT ←`, `BT →`, `BT CLR`) or a layer jump.
-Outer-column letters triple-tap to copy/paste (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`). Double-tapping any of these keys
-types the letter twice, so `add`, `book` and `jazz` still work.
+Colemak-DH. Mods live on the **home row**: `A R S T` / `N E I O` give GUI / CTRL / ALT / SHIFT on hold,
+and type their letter on tap. The top two rows are plain `&kp` — no tap-dance anywhere near them.
 
-These keys are a hold-tap (`hm0`–`hm7`) wrapping a tap-dance (`td0`–`td7`), not a mod-tap nested *inside* a
-tap-dance. Order matters: a hold is not an "interrupting keypress", so a tap-dance on the outside cannot
-resolve until its full `tapping-term-ms` elapses, which stacked ~400ms of latency onto every modifier. With
-the hold-tap outermost the modifier resolves on its own term, and the tap-dance only ever counts taps.
-`require-prior-idle-ms = <150>` stops fast letter rolls from firing a modifier; `quick-tap-ms = <200>`
-keeps the second and third taps of a tap-dance from being read as holds.
+Home-row mods are a single hold-tap, `hrm`, with `&kp` on both branches. Nothing is nested inside it.
+Earlier revisions wrapped a tap-dance in the hold-tap's tap branch; even with the hold-tap outermost that
+left a perceptible delay on shifted letters, so the tap-dances moved off the mod keys entirely.
+`flavor = "hold-preferred"` resolves the hold on the *press* of the next key, not its release, so a capital
+appears immediately. `require-prior-idle-ms = <150>` stops fast letter rolls from firing a modifier;
+`quick-tap-ms = <175>` lets a repeated letter repeat.
+
+The bottom row keeps the tap-dances (`td0`–`td7`) on `Z X C D` / `H , . /`: a double-tap types the letter
+twice (so `add`, `book` and `jazz` work), and a **triple-tap** switches Bluetooth profile (`BT ←`, `BT →`,
+`BT CLR`) or jumps to a layer. Note that these triple-taps are now reachable with plain taps — typing an
+ellipsis `...` fires `BT CLR` and unpairs the keyboard.
+
+`td10`–`td13` and the copy/paste macros (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`) are still defined but no longer bound
+to any key, since the outer columns are plain letters now.
 
 ![BASE layer](keymap-drawer/img/base.svg)
 

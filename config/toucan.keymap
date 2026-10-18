@@ -183,77 +183,14 @@
             tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&semi_semi>, <&shift_ctrl_v>;
         };
-        hm0: hold_mod_0 {
+        hrm: home_row_mod {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td0>;
-        };
-        hm1: hold_mod_1 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td1>;
-        };
-        hm2: hold_mod_2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td2>;
-        };
-        hm3: hold_mod_3 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td3>;
-        };
-        hm4: hold_mod_4 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td4>;
-        };
-        hm5: hold_mod_5 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td5>;
-        };
-        hm6: hold_mod_6 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td6>;
-        };
-        hm7: hold_mod_7 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&td7>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -271,9 +208,9 @@
         base {
             display-name = "BASE";
             bindings = <
-                &trans   &td11 &kp W &kp F &kp P &kp B      &kp J &kp L  &kp U  &kp Y  &td13  &trans
-                &trans   &td10 &kp R &kp S &kp T &kp G      &kp M &kp N  &kp E  &kp I  &td12  &trans
-                &trans   &hm3 LGUI 0  &hm2 LCTRL 0  &hm1 LALT 0  &hm0 LSHIFT 0  &kp V      &kp K  &hm4 RSHIFT 0  &hm5 RALT 0  &hm6 RCTRL 0  &hm7 RGUI 0  &trans
+                &trans   &kp Q         &kp W          &kp F         &kp P           &kp B      &kp J  &kp L           &kp U         &kp Y          &kp SEMI      &trans
+                &trans   &hrm LGUI A   &hrm LCTRL R   &hrm LALT S   &hrm LSHIFT T   &kp G      &kp M  &hrm RSHIFT N   &hrm RALT E   &hrm RCTRL I   &hrm RGUI O   &trans
+                &trans   &td3          &td2           &td1          &td0            &kp V      &kp K  &td4            &td5          &td6           &td7          &trans
                                 &kp TAB &kp SPACE &mo 1   &mo 2 &kp RET &kp BSPC
             >;
         };
