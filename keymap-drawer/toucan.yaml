@@ -1,0 +1,394 @@
+draw_config:
+  dark_mode: auto
+  draw_key_sides: true
+  append_colon_to_layer_header: false
+  footer_text: ''
+layout: {dts_layout: boards/shields/toucan/toucan.dtsi, layout_name: default_layout}
+layers:
+  BASE:
+  - {t: ▽, type: trans}
+  - {t: Q, s: 2✕ ⇧⌃C}
+  - W
+  - F
+  - P
+  - B
+  - J
+  - L
+  - U
+  - Y
+  - {t: ';', s: 2✕ ⇧⌃V}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: A, s: 2✕ ⌃C}
+  - R
+  - S
+  - T
+  - G
+  - M
+  - N
+  - E
+  - I
+  - {t: O, s: 2✕ ⌃V}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: Z, h: GUI, s: 2✕ BT ←}
+  - {t: X, h: CTRL, s: 2✕ BT →}
+  - {t: C, h: ALT, s: 2✕ RES1}
+  - {t: D, h: SHIFT, s: 2✕ GAME}
+  - V
+  - K
+  - {t: H, h: SHIFT, s: 2✕ RES2}
+  - {t: ',', h: ALT, s: 2✕ RES3}
+  - {t: '.', h: CTRL, s: 2✕ BT CLR}
+  - {t: /, h: GUI, s: 2✕ STUDIO}
+  - {t: ▽, type: trans}
+  - TAB
+  - SPACE
+  - NAV
+  - SYM
+  - RET
+  - BSPC
+  NAV:
+  - {t: ▽, type: trans}
+  - PSCRN
+  - SLCK
+  - UP
+  - {t: ▽, type: trans}
+  - PG UP
+  - +
+  - '7'
+  - '8'
+  - '9'
+  - FF
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - INSERT
+  - LEFT
+  - DOWN
+  - RIGHT
+  - PG DN
+  - '-'
+  - '4'
+  - '5'
+  - '6'
+  - RW
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - CAPS
+  - ESC
+  - DEL
+  - HOME
+  - END
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - SHUFFLE
+  - {t: ▽, type: trans}
+  - TAB
+  - SPACE
+  - {type: held}
+  - {t: ▽, type: trans}
+  - RET
+  - BSPC
+  SYM:
+  - {t: ▽, type: trans}
+  - NEXT
+  - VOL UP
+  - '['
+  - ']'
+  - '!'
+  - '~'
+  - $
+  - _
+  - ^
+  - <
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - PP
+  - MUTE
+  - '{'
+  - '}'
+  - '|'
+  - '*'
+  - '@'
+  - '#'
+  - \
+  - '='
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - PREV
+  - VOL DN
+  - (
+  - )
+  - '&'
+  - '%'
+  - ''''
+  - '"'
+  - '`'
+  - '>'
+  - {t: ▽, type: trans}
+  - TAB
+  - SPACE
+  - {t: ▽, type: trans}
+  - {type: held}
+  - RET
+  - BSPC
+  GAME:
+  - {t: ▽, type: trans}
+  - {t: F, h: 3✕ tt, s: 2✕ T}
+  - Q
+  - W
+  - E
+  - R
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LSHIFT
+  - A
+  - S
+  - D
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LCTRL
+  - {t: X, h: 3✕ zz, s: 2✕ Z}
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - {t: ▽, type: trans}
+  - TAB
+  - SPACE
+  - GNUM
+  - SYM
+  - RET
+  - BSPC
+  GNUM:
+  - {t: ▽, type: trans}
+  - PG UP
+  - '7'
+  - '8'
+  - '9'
+  - +
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - PG DN
+  - '4'
+  - '5'
+  - '6'
+  - '='
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '-'
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  RES1:
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  RES2:
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  RES3:
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  ALT:
+  - {t: ▽, type: trans}
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F11
+  - F12
+  - F13
+  - F14
+  - F15
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: BASE, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
+  - {type: held}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
