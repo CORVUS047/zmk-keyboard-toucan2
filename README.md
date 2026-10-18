@@ -1,6 +1,13 @@
 # ZMK config for beekeeb Toucan2 Keyboard
 
-[The beekeeb Toucan2 Keyboard](https://beekeeb.com/introducing-toucan2/) is a wireless split 42-key column‑stagger keyboard that a display and a trackpad, with an aggressive stagger on the pinky columns.
+[The beekeeb Toucan2 Keyboard](https://beekeeb.com/introducing-toucan2/) is a wireless split column‑stagger
+keyboard with a display and a trackpad, and an aggressive stagger on the pinky columns.
+
+**This build is 36 keys**: three rows of five columns per half, plus three thumb keys per half. The shield's
+physical layout in [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi) declares 42
+positions and the matrix scans six columns per half, but the outermost column on each half has no switch
+fitted — which is why columns 0 and 11 are `&trans` on every layer, and why the generated images below
+draw six phantom keys down the outer edges. Don't bind anything there; it is unreachable.
 
 # Keymap
 
@@ -9,8 +16,7 @@ Images below are generated from [config/toucan.keymap](config/toucan.keymap) wit
 
 Legend per key: center = tap, bottom = hold, top = triple-tap (`3✕`) on BASE, double-tap (`2✕`) on GAME.
 A double-tap on BASE just types the letter twice.
-The outermost column on each half is `&trans` on every layer except ALT, where the top outer key on each
-half is `&bootloader`.
+The outermost column on each half is `&trans` on every layer — those positions have no switch.
 
 | # | Layer | How to reach it |
 |---|-------|-----------------|
@@ -65,10 +71,12 @@ reachable even if the home-row behaviors misbehave:
 
 | Key | Binding | Effect |
 |-----|---------|--------|
-| Top outer, left half | `&bootloader` | Left half reboots into the UF2 bootloader and mounts as a USB drive — copy the `.uf2` in to flash. No physical reset button needed. |
-| Top outer, right half | `&bootloader` | Same for the right half. |
+| Outer thumb, left half (`TAB` on BASE) | `&bootloader` | Left half reboots into the UF2 bootloader and mounts as a USB drive — copy the `.uf2` in to flash. No physical reset button needed. |
+| Outer thumb, right half (`BSPC` on BASE) | `&bootloader` | Same for the right half. |
 | Innermost, bottom row, left half | `&sys_reset` | Soft-reboots the left half into the existing firmware. |
 | Innermost, bottom row, right half | `&sys_reset` | Soft-reboots the right half. |
+
+Both inner thumbs are already held down to reach ALT, so press the outer thumb key with your index finger.
 
 ZMK reset behaviors are source-specific: each key resets the half it physically sits on, which is why
 there is one per side. (Combos are the exception — a combo-triggered reset always hits the central half —
