@@ -350,7 +350,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   ALT:
-  - {t: ▽, type: trans}
+  - BOOT
   - F1
   - F2
   - F3
@@ -361,7 +361,7 @@ layers:
   - {t: BASE, h: toggle}
   - {t: BASE, h: toggle}
   - {t: BASE, h: toggle}
-  - {t: ▽, type: trans}
+  - BOOT
   - {t: ▽, type: trans}
   - F6
   - F7
@@ -379,8 +379,8 @@ layers:
   - F12
   - F13
   - F14
-  - F15
-  - {t: BASE, h: toggle}
+  - RESET
+  - RESET
   - {t: BASE, h: toggle}
   - {t: BASE, h: toggle}
   - {t: BASE, h: toggle}

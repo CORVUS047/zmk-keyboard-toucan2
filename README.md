@@ -8,7 +8,8 @@ Images below are generated from [config/toucan.keymap](config/toucan.keymap) wit
 [keymap-drawer](https://github.com/caksoylar/keymap-drawer) — see [Regenerating the keymap images](#regenerating-the-keymap-images).
 
 Legend per key: center = tap, bottom = hold, top = double-tap (`2✕`).
-The outermost column on each half is `&trans` on every layer.
+The outermost column on each half is `&trans` on every layer except ALT, where the top outer key on each
+half is `&bootloader`.
 
 | # | Layer | How to reach it |
 |---|-------|-----------------|
@@ -22,7 +23,8 @@ The outermost column on each half is `&trans` on every layer.
 | 7 | RES3  | double-tap `,` (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
-Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` — a single tap gets you back to BASE.
+Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` — a single tap gets you back to BASE
+(except the two ALT reset keys described below).
 
 ## BASE
 
@@ -47,7 +49,24 @@ Brackets and media on the left, symbols on the right. The trackpad also scrolls 
 
 ## ALT
 
-Tri-layer: held automatically when NAV and SYM are both held. F1–F15.
+Tri-layer: held automatically when NAV and SYM are both held. F1–F14, plus the firmware reset keys.
+
+Reset keys live here because reaching ALT needs only the two thumb keys — no tap-dance — so they stay
+reachable even if the home-row behaviors misbehave:
+
+| Key | Binding | Effect |
+|-----|---------|--------|
+| Top outer, left half | `&bootloader` | Left half reboots into the UF2 bootloader and mounts as a USB drive — copy the `.uf2` in to flash. No physical reset button needed. |
+| Top outer, right half | `&bootloader` | Same for the right half. |
+| Innermost, bottom row, left half | `&sys_reset` | Soft-reboots the left half into the existing firmware. |
+| Innermost, bottom row, right half | `&sys_reset` | Soft-reboots the right half. |
+
+ZMK reset behaviors are source-specific: each key resets the half it physically sits on, which is why
+there is one per side. (Combos are the exception — a combo-triggered reset always hits the central half —
+so keep these as plain keys.)
+
+Note that ZMK Studio cannot replace a flash for every change: it edits layer bindings live, but behavior
+properties such as a tap-dance `tapping-term-ms` are compile-time devicetree values and still need new firmware.
 
 ![ALT layer](keymap-drawer/img/alt.svg)
 

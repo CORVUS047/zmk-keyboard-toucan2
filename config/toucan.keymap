@@ -47,85 +47,85 @@
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt LSHIFT D>, <&to 3>;
         };
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt LALT C>, <&to 5>;
         };
         td2: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt LCTRL X>, <&bt BT_NXT>;
         };
         td3: tap_dance_3 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt LGUI Z>, <&bt BT_PRV>;
         };
         td4: tap_dance_4 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt RSHIFT H>, <&to 6>;
         };
         td5: tap_dance_5 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt RALT COMMA>, <&to 7>;
         };
         td6: tap_dance_6 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt RCTRL DOT>, <&bt BT_CLR>;
         };
         td7: tap_dance_7 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&mt RGUI FSLH>, <&studio_unlock>;
         };
         td8: tap_dance_8 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp F>, <&kp T>, <&t_t>;
         };
         td9: tap_dance_9 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp X>, <&kp Z>, <&z_z>;
         };
         td10: tap_dance_10 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp A>, <&ctrl_c>;
         };
         td11: tap_dance_11 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp Q>, <&shift_ctrl_c>;
         };
         td12: tap_dance_12 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp O>, <&ctrl_v>;
         };
         td13: tap_dance_13 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&shift_ctrl_v>;
         };
     };
@@ -224,9 +224,9 @@
         alt {
             display-name = "ALT";
             bindings = <
-                &trans &kp F1  &kp F2  &kp F3  &kp F4  &kp F5          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
+                &bootloader &kp F1  &kp F2  &kp F3  &kp F4  &kp F5     &to 0 &to 0 &to 0 &to 0 &to 0 &bootloader
                 &trans &kp F6  &kp F7  &kp F8  &kp F9  &kp F10         &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &kp F11 &kp F12 &kp F13 &kp F14 &kp F15         &to 0 &to 0 &to 0 &to 0 &to 0 &trans
+                &trans &kp F11 &kp F12 &kp F13 &kp F14 &sys_reset      &sys_reset &to 0 &to 0 &to 0 &to 0 &trans
                             &trans &to 0 &trans           &trans &trans &trans
             >;
         };
