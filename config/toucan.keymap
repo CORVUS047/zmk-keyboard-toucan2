@@ -145,7 +145,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp FSLH>, <&fslh_fslh>, <&studio_unlock>;
+            bindings = <&kp FSLH>, <&fslh_fslh>;
         };
         td8: tap_dance_8 {
             compatible = "zmk,behavior-tap-dance";

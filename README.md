@@ -36,7 +36,7 @@ Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` —
 ## BASE
 
 Colemak-DH. The bottom row holds mods — `Z X C D` / `H , . /` give GUI / CTRL / ALT / SHIFT — and
-**triple-tap** for Bluetooth profile switching (`BT ←`, `BT →`, `BT CLR`), ZMK Studio unlock, or a layer jump.
+**triple-tap** for Bluetooth profile switching (`BT ←`, `BT →`, `BT CLR`) or a layer jump.
 Outer-column letters triple-tap to copy/paste (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`). Double-tapping any of these keys
 types the letter twice, so `add`, `book` and `jazz` still work.
 
@@ -82,8 +82,14 @@ ZMK reset behaviors are source-specific: each key resets the half it physically 
 there is one per side. (Combos are the exception — a combo-triggered reset always hits the central half —
 so keep these as plain keys.)
 
-Note that ZMK Studio cannot replace a flash for every change: it edits layer bindings live, but behavior
-properties such as a tap-dance `tapping-term-ms` are compile-time devicetree values and still need new firmware.
+ZMK Studio is compiled into the left half (`CONFIG_ZMK_STUDIO=y` plus the `studio-rpc-usb-uart` snippet in
+[build.yaml](build.yaml)), but **no key is bound to `&studio_unlock`**, so it cannot be unlocked and cannot
+change anything. That is deliberate: Studio's keymap is stored in the settings partition and silently
+overrides the compiled `.keymap` until a "Restore Stock Settings" is performed, which is a confusing failure
+mode to hit by accident. Bind `&studio_unlock` to something temporarily if you ever actually want it.
+
+Studio could not replace flashing anyway — it edits layer bindings, but behavior properties such as a
+tap-dance `tapping-term-ms` are compile-time devicetree values.
 
 ![ALT layer](keymap-drawer/img/alt.svg)
 

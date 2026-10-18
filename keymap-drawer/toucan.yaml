@@ -40,7 +40,7 @@ layers:
   - {t: H, h: SHIFT, s: 3✕ RES2}
   - {t: ',', h: ALT, s: 3✕ RES3}
   - {t: '.', h: CTRL, s: 3✕ BT CLR}
-  - {t: /, h: GUI, s: 3✕ STUDIO}
+  - {t: /, h: GUI}
   - {t: ▽, type: trans}
   - TAB
   - SPACE
