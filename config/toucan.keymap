@@ -41,6 +41,61 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp Z>, <&macro_tap &kp Z>;
         };
+        d_d: d_d {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp D>, <&macro_tap &kp D>;
+        };
+        c_c: c_c {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp C>, <&macro_tap &kp C>;
+        };
+        x_x: x_x {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp X>, <&macro_tap &kp X>;
+        };
+        h_h: h_h {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp H>, <&macro_tap &kp H>;
+        };
+        comma_comma: comma_comma {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp COMMA>, <&macro_tap &kp COMMA>;
+        };
+        dot_dot: dot_dot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DOT>, <&macro_tap &kp DOT>;
+        };
+        fslh_fslh: fslh_fslh {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp FSLH>, <&macro_tap &kp FSLH>;
+        };
+        a_a: a_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp A>, <&macro_tap &kp A>;
+        };
+        q_q: q_q {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp Q>, <&macro_tap &kp Q>;
+        };
+        o_o: o_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp O>, <&macro_tap &kp O>;
+        };
+        semi_semi: semi_semi {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp SEMI>, <&macro_tap &kp SEMI>;
+        };
     };
 
     behaviors {
@@ -48,49 +103,49 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LSHIFT D>, <&to 3>;
+            bindings = <&kp D>, <&d_d>, <&to 3>;
         };
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LALT C>, <&to 5>;
+            bindings = <&kp C>, <&c_c>, <&to 5>;
         };
         td2: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LCTRL X>, <&bt BT_NXT>;
+            bindings = <&kp X>, <&x_x>, <&bt BT_NXT>;
         };
         td3: tap_dance_3 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LGUI Z>, <&bt BT_PRV>;
+            bindings = <&kp Z>, <&z_z>, <&bt BT_PRV>;
         };
         td4: tap_dance_4 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RSHIFT H>, <&to 6>;
+            bindings = <&kp H>, <&h_h>, <&to 6>;
         };
         td5: tap_dance_5 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RALT COMMA>, <&to 7>;
+            bindings = <&kp COMMA>, <&comma_comma>, <&to 7>;
         };
         td6: tap_dance_6 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RCTRL DOT>, <&bt BT_CLR>;
+            bindings = <&kp DOT>, <&dot_dot>, <&bt BT_CLR>;
         };
         td7: tap_dance_7 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RGUI FSLH>, <&studio_unlock>;
+            bindings = <&kp FSLH>, <&fslh_fslh>, <&studio_unlock>;
         };
         td8: tap_dance_8 {
             compatible = "zmk,behavior-tap-dance";
@@ -108,25 +163,97 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp A>, <&ctrl_c>;
+            bindings = <&kp A>, <&a_a>, <&ctrl_c>;
         };
         td11: tap_dance_11 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp Q>, <&shift_ctrl_c>;
+            bindings = <&kp Q>, <&q_q>, <&shift_ctrl_c>;
         };
         td12: tap_dance_12 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp O>, <&ctrl_v>;
+            bindings = <&kp O>, <&o_o>, <&ctrl_v>;
         };
         td13: tap_dance_13 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp SEMI>, <&shift_ctrl_v>;
+            bindings = <&kp SEMI>, <&semi_semi>, <&shift_ctrl_v>;
+        };
+        hm0: hold_mod_0 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td0>;
+        };
+        hm1: hold_mod_1 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td1>;
+        };
+        hm2: hold_mod_2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td2>;
+        };
+        hm3: hold_mod_3 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td3>;
+        };
+        hm4: hold_mod_4 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td4>;
+        };
+        hm5: hold_mod_5 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td5>;
+        };
+        hm6: hold_mod_6 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td6>;
+        };
+        hm7: hold_mod_7 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&td7>;
         };
     };
 
@@ -146,7 +273,7 @@
             bindings = <
                 &trans   &td11 &kp W &kp F &kp P &kp B      &kp J &kp L  &kp U  &kp Y  &td13  &trans
                 &trans   &td10 &kp R &kp S &kp T &kp G      &kp M &kp N  &kp E  &kp I  &td12  &trans
-                &trans   &td3  &td2  &td1  &td0  &kp V      &kp K &td4   &td5   &td6   &td7   &trans
+                &trans   &hm3 LGUI 0  &hm2 LCTRL 0  &hm1 LALT 0  &hm0 LSHIFT 0  &kp V      &kp K  &hm4 RSHIFT 0  &hm5 RALT 0  &hm6 RCTRL 0  &hm7 RGUI 0  &trans
                                 &kp TAB &kp SPACE &mo 1   &mo 2 &kp RET &kp BSPC
             >;
         };

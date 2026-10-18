@@ -7,7 +7,7 @@ layout: {dts_layout: boards/shields/toucan/toucan.dtsi, layout_name: default_lay
 layers:
   BASE:
   - {t: ▽, type: trans}
-  - {t: Q, s: 2✕ ⇧⌃C}
+  - {t: Q, s: 3✕ ⇧⌃C}
   - W
   - F
   - P
@@ -16,10 +16,10 @@ layers:
   - L
   - U
   - Y
-  - {t: ';', s: 2✕ ⇧⌃V}
+  - {t: ';', s: 3✕ ⇧⌃V}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: A, s: 2✕ ⌃C}
+  - {t: A, s: 3✕ ⌃C}
   - R
   - S
   - T
@@ -28,19 +28,19 @@ layers:
   - N
   - E
   - I
-  - {t: O, s: 2✕ ⌃V}
+  - {t: O, s: 3✕ ⌃V}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: Z, h: GUI, s: 2✕ BT ←}
-  - {t: X, h: CTRL, s: 2✕ BT →}
-  - {t: C, h: ALT, s: 2✕ RES1}
-  - {t: D, h: SHIFT, s: 2✕ GAME}
+  - {t: Z, h: GUI, s: 3✕ BT ←}
+  - {t: X, h: CTRL, s: 3✕ BT →}
+  - {t: C, h: ALT, s: 3✕ RES1}
+  - {t: D, h: SHIFT, s: 3✕ GAME}
   - V
   - K
-  - {t: H, h: SHIFT, s: 2✕ RES2}
-  - {t: ',', h: ALT, s: 2✕ RES3}
-  - {t: '.', h: CTRL, s: 2✕ BT CLR}
-  - {t: /, h: GUI, s: 2✕ STUDIO}
+  - {t: H, h: SHIFT, s: 3✕ RES2}
+  - {t: ',', h: ALT, s: 3✕ RES3}
+  - {t: '.', h: CTRL, s: 3✕ BT CLR}
+  - {t: /, h: GUI, s: 3✕ STUDIO}
   - {t: ▽, type: trans}
   - TAB
   - SPACE

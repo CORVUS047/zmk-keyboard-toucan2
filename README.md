@@ -7,7 +7,8 @@
 Images below are generated from [config/toucan.keymap](config/toucan.keymap) with
 [keymap-drawer](https://github.com/caksoylar/keymap-drawer) — see [Regenerating the keymap images](#regenerating-the-keymap-images).
 
-Legend per key: center = tap, bottom = hold, top = double-tap (`2✕`).
+Legend per key: center = tap, bottom = hold, top = triple-tap (`3✕`) on BASE, double-tap (`2✕`) on GAME.
+A double-tap on BASE just types the letter twice.
 The outermost column on each half is `&trans` on every layer except ALT, where the top outer key on each
 half is `&bootloader`.
 
@@ -28,9 +29,17 @@ Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` —
 
 ## BASE
 
-Colemak-DH. The bottom row is tap-dance mod-taps: hold `Z X C D` / `H , . /` for GUI / CTRL / ALT / SHIFT,
-double-tap them for Bluetooth profile switching (`BT ←`, `BT →`, `BT CLR`), ZMK Studio unlock, or a layer jump.
-Outer-column letters double-tap to copy/paste (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`).
+Colemak-DH. The bottom row holds mods — `Z X C D` / `H , . /` give GUI / CTRL / ALT / SHIFT — and
+**triple-tap** for Bluetooth profile switching (`BT ←`, `BT →`, `BT CLR`), ZMK Studio unlock, or a layer jump.
+Outer-column letters triple-tap to copy/paste (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`). Double-tapping any of these keys
+types the letter twice, so `add`, `book` and `jazz` still work.
+
+These keys are a hold-tap (`hm0`–`hm7`) wrapping a tap-dance (`td0`–`td7`), not a mod-tap nested *inside* a
+tap-dance. Order matters: a hold is not an "interrupting keypress", so a tap-dance on the outside cannot
+resolve until its full `tapping-term-ms` elapses, which stacked ~400ms of latency onto every modifier. With
+the hold-tap outermost the modifier resolves on its own term, and the tap-dance only ever counts taps.
+`require-prior-idle-ms = <150>` stops fast letter rolls from firing a modifier; `quick-tap-ms = <200>`
+keeps the second and third taps of a tap-dance from being read as holds.
 
 ![BASE layer](keymap-drawer/img/base.svg)
 
