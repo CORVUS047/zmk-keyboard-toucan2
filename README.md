@@ -30,8 +30,9 @@ The outermost column on each half is `&trans` on every layer — those positions
 | 7 | RES3  | triple-tap `,` (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
-Every key on the reserved layers, and the right half of GNUM/ALT, is `&to 0` — a single tap gets you back to BASE
-(except the two ALT reset keys described below).
+Every key on the reserved layers, and the right half of ALT, is `&to 0` — a single tap gets you back to BASE
+(except the two ALT reset keys described below). GNUM is the exception: its right half is a numpad, so the
+escape there is the **right inner thumb**.
 
 ## BASE
 
@@ -111,6 +112,24 @@ and triple-taps to `zz`.
 
 Numbers and paging for the GAME layer. Also activated for as long as a finger rests on the trackpad
 (the `is_touching_processor` node in [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi)).
+
+Both halves carry digits, but they send **different scancodes**:
+
+| Half | Keycodes | Use |
+|------|----------|-----|
+| Left  | `N0`–`N9`, `PLUS`/`EQUAL`/`MINUS` | top-row digits — what most apps and text fields expect |
+| Right | `KP_N0`–`KP_N9`, `KP_PLUS`/`KP_MINUS`/`KP_MULTIPLY`/`KP_DOT`/`KP_EQUAL` | a real numpad, for apps that distinguish it (games, CAD, spreadsheets) |
+
+The right half is laid out like a physical numpad — digits in the middle three columns, `+` `-` `0` down the
+inner column, `.` `*` `=` down the outer:
+
+```
++  7 8 9 .
+-  4 5 6 *
+0  1 2 3 =
+```
+
+Tap the right inner thumb to return to BASE.
 
 ![GNUM layer](keymap-drawer/img/gnum.svg)
 
