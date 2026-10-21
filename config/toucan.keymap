@@ -41,41 +41,6 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp Z>, <&macro_tap &kp Z>;
         };
-        d_d: d_d {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp D>, <&macro_tap &kp D>;
-        };
-        c_c: c_c {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp C>, <&macro_tap &kp C>;
-        };
-        x_x: x_x {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp X>, <&macro_tap &kp X>;
-        };
-        h_h: h_h {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp H>, <&macro_tap &kp H>;
-        };
-        comma_comma: comma_comma {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp COMMA>, <&macro_tap &kp COMMA>;
-        };
-        dot_dot: dot_dot {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp DOT>, <&macro_tap &kp DOT>;
-        };
-        fslh_fslh: fslh_fslh {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp FSLH>, <&macro_tap &kp FSLH>;
-        };
         a_a: a_a {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -99,54 +64,6 @@
     };
 
     behaviors {
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp D>, <&d_d>, <&to 3>;
-        };
-        td1: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp C>, <&c_c>, <&to 5>;
-        };
-        td2: tap_dance_2 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp X>, <&x_x>, <&bt BT_NXT>;
-        };
-        td3: tap_dance_3 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp Z>, <&z_z>, <&bt BT_PRV>;
-        };
-        td4: tap_dance_4 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp H>, <&h_h>, <&to 6>;
-        };
-        td5: tap_dance_5 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp COMMA>, <&comma_comma>, <&to 7>;
-        };
-        td6: tap_dance_6 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp DOT>, <&dot_dot>, <&bt BT_CLR>;
-        };
-        td7: tap_dance_7 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp FSLH>, <&fslh_fslh>;
-        };
         td8: tap_dance_8 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -194,6 +111,64 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        // BASE-only system chords: left outer thumb (TAB) + the key that used
+        // to carry the action on its triple-tap. require-prior-idle-ms keeps
+        // them from firing mid-typing.
+        combo_bt_prv {
+            bindings = <&bt BT_PRV>;
+            key-positions = <36 25>;   // TAB + Z
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        combo_bt_nxt {
+            bindings = <&bt BT_NXT>;
+            key-positions = <36 26>;   // TAB + X
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        combo_res1 {
+            bindings = <&to 5>;
+            key-positions = <36 27>;   // TAB + C
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        combo_game {
+            bindings = <&to 3>;
+            key-positions = <36 28>;   // TAB + D
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        combo_res2 {
+            bindings = <&to 6>;
+            key-positions = <36 31>;   // TAB + H
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        combo_res3 {
+            bindings = <&to 7>;
+            key-positions = <36 32>;   // TAB + ,
+            layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        // Destructive: unpairs every profile. Three keys on purpose.
+        combo_bt_clr {
+            bindings = <&bt BT_CLR>;
+            key-positions = <36 33 34>;   // TAB + . + /
+            layers = <BASE>;
+            timeout-ms = <75>;
+            require-prior-idle-ms = <150>;
+        };
+    };
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
@@ -210,7 +185,7 @@
             bindings = <
                 &trans   &kp Q         &kp W          &kp F         &kp P           &kp B      &kp J  &kp L           &kp U         &kp Y          &kp SEMI      &trans
                 &trans   &hrm LGUI A   &hrm LCTRL R   &hrm LALT S   &hrm LSHIFT T   &kp G      &kp M  &hrm RSHIFT N   &hrm RALT E   &hrm RCTRL I   &hrm RGUI O   &trans
-                &trans   &td3          &td2           &td1          &td0            &kp V      &kp K  &td4            &td5          &td6           &td7          &trans
+                &trans   &kp Z         &kp X          &kp C         &kp D           &kp V      &kp K  &kp H           &kp COMMA     &kp DOT        &kp FSLH      &trans
                                 &kp TAB &kp SPACE &mo 1   &mo 2 &kp RET &kp BSPC
             >;
         };

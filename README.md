@@ -23,11 +23,11 @@ The outermost column on each half is `&trans` on every layer — those positions
 | 0 | BASE  | default |
 | 1 | NAV   | hold left inner thumb |
 | 2 | SYM   | hold right inner thumb |
-| 3 | GAME  | triple-tap `D` |
+| 3 | GAME  | `TAB` + `D` combo |
 | 4 | GNUM  | hold left inner thumb while on GAME, or touch the trackpad |
-| 5 | RES1  | triple-tap `C` (reserved, unmapped) |
-| 6 | RES2  | triple-tap `H` (reserved, unmapped) |
-| 7 | RES3  | triple-tap `,` (reserved, unmapped) |
+| 5 | RES1  | `TAB` + `C` combo (reserved, unmapped) |
+| 6 | RES2  | `TAB` + `H` combo (reserved, unmapped) |
+| 7 | RES3  | `TAB` + `,` combo (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
 Every key on the reserved layers, and the right half of ALT, is `&to 0` — a single tap gets you back to BASE
@@ -37,7 +37,7 @@ escape there is the **right inner thumb**.
 ## BASE
 
 Colemak-DH. Mods live on the **home row**: `A R S T` / `N E I O` give GUI / CTRL / ALT / SHIFT on hold,
-and type their letter on tap. The top two rows are plain `&kp` — no tap-dance anywhere near them.
+and type their letter on tap. Every letter key is a plain `&kp` — there is no tap-dance on this layer.
 
 Home-row mods are a single hold-tap, `hrm`, with `&kp` on both branches. Nothing is nested inside it.
 Earlier revisions wrapped a tap-dance in the hold-tap's tap branch; even with the hold-tap outermost that
@@ -46,10 +46,36 @@ left a perceptible delay on shifted letters, so the tap-dances moved off the mod
 appears immediately. `require-prior-idle-ms = <150>` stops fast letter rolls from firing a modifier;
 `quick-tap-ms = <175>` lets a repeated letter repeat.
 
-The bottom row keeps the tap-dances (`td0`–`td7`) on `Z X C D` / `H , . /`: a double-tap types the letter
-twice (so `add`, `book` and `jazz` work), and a **triple-tap** switches Bluetooth profile (`BT ←`, `BT →`,
-`BT CLR`) or jumps to a layer. Note that these triple-taps are now reachable with plain taps — typing an
-ellipsis `...` fires `BT CLR` and unpairs the keyboard.
+The bottom row used to carry tap-dances (`td0`–`td7`) on `Z X C D` / `H , . /`, with a triple-tap for
+Bluetooth and layer jumps. Those are gone, for two reasons. The triple-taps were reachable by accident —
+typing an ellipsis `...` fired `BT CLR` and unpaired the keyboard. Worse, a tap-dance emits nothing on
+press: it waits out `tapping-term-ms` to see whether another tap is coming, and the binding only fires once
+it resolves, with whatever modifiers are held *at that moment*. Releasing shift (or ctrl, or alt) before the
+tap-dance resolved produced an unmodified key — `⇧Z` typed `z`, `⌃C` sent a bare `c`. Mod-morph wrappers
+could have bypassed the tap-dance while a modifier was down, but eight wrappers to rescue a behavior whose
+double-tap branch merely retyped the letter was not worth it: with plain `&kp`, tapping `Z` twice already
+types `zz`.
+
+The layer jumps and Bluetooth controls moved to **combos** anchored on the left outer thumb (`TAB` on BASE):
+
+| Combo | Action |
+|-------|--------|
+| `TAB` + `Z` | `BT ←` — previous Bluetooth profile |
+| `TAB` + `X` | `BT →` — next Bluetooth profile |
+| `TAB` + `C` | jump to RES1 |
+| `TAB` + `D` | jump to GAME |
+| `TAB` + `H` | jump to RES2 |
+| `TAB` + `,` | jump to RES3 |
+| `TAB` + `.` + `/` | `BT CLR` — unpairs the current profile |
+
+Each is `layers = <BASE>`, so none of them shadow a NAV, SYM or GAME binding. `timeout-ms = <50>` and
+`require-prior-idle-ms = <150>` keep them from firing during a fast roll, and `BT CLR` takes three keys
+because it is destructive. All seven share the `TAB` position, so
+`CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY=7` is set in
+[boards/shields/toucan/toucan_left.conf](boards/shields/toucan/toucan_left.conf) and
+[toucan_right.conf](boards/shields/toucan/toucan_right.conf) — the default of 5 would silently drop two.
+Tapping `TAB` on its own is unaffected: a combo candidate is released as a plain tap the moment the key
+comes up.
 
 `td10`–`td13` and the copy/paste macros (`⌃C`, `⇧⌃C`, `⌃V`, `⇧⌃V`) are still defined but no longer bound
 to any key, since the outer columns are plain letters now.
@@ -135,7 +161,7 @@ Tap the right inner thumb to return to BASE.
 
 ## Reserved layers
 
-RES1/RES2/RES3 are empty placeholders, reachable by double-tapping `C`, `H` and `,`.
+RES1/RES2/RES3 are empty placeholders, reachable with the `TAB` + `C`, `TAB` + `H` and `TAB` + `,` combos.
 
 ![Reserved layers](keymap-drawer/img/reserved.svg)
 
@@ -144,7 +170,8 @@ RES1/RES2/RES3 are empty placeholders, reachable by double-tapping `C`, `H` and 
 ```sh
 pip install keymap-drawer
 
-# re-parse the keymap, then hand-merge the tap-dance legends into keymap-drawer/toucan.yaml
+# re-parse the keymap, then hand-merge the tap-dance legends and combo labels
+# into keymap-drawer/toucan.yaml
 keymap parse -z config/toucan.keymap
 
 # redraw
@@ -155,7 +182,8 @@ keymap draw keymap-drawer/toucan.yaml -s RES1 RES2 RES3 -o keymap-drawer/img/res
 ```
 
 `keymap parse` renders tap-dances as raw `&tdN` references; [keymap-drawer/toucan.yaml](keymap-drawer/toucan.yaml)
-spells them out as tap/hold/double-tap legends, so edit that file rather than overwriting it.
+spells them out as tap/hold/double-tap legends and gives the BASE combos short labels, so edit that file
+rather than overwriting it.
 
 # Customizations
 

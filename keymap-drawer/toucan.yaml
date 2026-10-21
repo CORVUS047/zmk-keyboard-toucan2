@@ -31,15 +31,15 @@ layers:
   - {t: O, h: GUI}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: Z, s: 3✕ BT ←}
-  - {t: X, s: 3✕ BT →}
-  - {t: C, s: 3✕ RES1}
-  - {t: D, s: 3✕ GAME}
+  - Z
+  - X
+  - C
+  - D
   - V
   - K
-  - {t: H, s: 3✕ RES2}
-  - {t: ',', s: 3✕ RES3}
-  - {t: '.', s: 3✕ BT CLR}
+  - H
+  - ','
+  - '.'
   - /
   - {t: ▽, type: trans}
   - TAB
@@ -392,3 +392,11 @@ layers:
   - {type: held}
   - {t: ▽, type: trans}
   - BOOT
+combos:
+- {p: [36, 25], k: BT ←, l: [BASE]}
+- {p: [36, 26], k: BT →, l: [BASE]}
+- {p: [36, 27], k: RES1, l: [BASE]}
+- {p: [36, 28], k: GAME, l: [BASE]}
+- {p: [36, 31], k: RES2, l: [BASE]}
+- {p: [36, 32], k: RES3, l: [BASE]}
+- {p: [36, 33, 34], k: BT CLR, l: [BASE]}
