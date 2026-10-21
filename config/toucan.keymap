@@ -263,10 +263,10 @@
         alt {
             display-name = "ALT";
             bindings = <
-                &trans &kp F1  &kp F2  &kp F3  &kp F4  &kp F5          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &kp F6  &kp F7  &kp F8  &kp F9  &kp F10         &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &kp F11 &kp F12 &kp F13 &kp F14 &sys_reset      &sys_reset &to 0 &to 0 &to 0 &to 0 &trans
-                            &bootloader &to 0 &trans    &trans &trans &bootloader
+                &trans &kp F1  &kp F2  &kp F3  &kp F4  &kp F5          &kp KP_PLUS  &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT      &trans
+                &trans &kp F6  &kp F7  &kp F8  &kp F9  &kp F10         &kp KP_MINUS &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_MULTIPLY &trans
+                &trans &kp F11 &kp F12 &kp F13 &kp F14 &kp F15         &kp KP_N0    &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL    &trans
+                            &bootloader &sys_reset &trans           &trans &sys_reset &bootloader
             >;
         };
     };

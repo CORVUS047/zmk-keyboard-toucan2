@@ -184,11 +184,11 @@ layers:
   - '8'
   - '9'
   - +
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - KP PLUS
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP DOT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - PG DN
@@ -196,11 +196,11 @@ layers:
   - '5'
   - '6'
   - '='
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - KP MINUS
+  - KP 4
+  - KP 5
+  - KP 6
+  - KP MULTIPLY
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '0'
@@ -208,16 +208,16 @@ layers:
   - '2'
   - '3'
   - '-'
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - KP 0
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP EQUAL
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  - {t: ▽, type: trans}
+  - {t: BASE, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   RES1:
@@ -356,11 +356,11 @@ layers:
   - F3
   - F4
   - F5
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - KP PLUS
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP DOT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - F6
@@ -368,29 +368,29 @@ layers:
   - F8
   - F9
   - F10
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - KP MINUS
+  - KP 4
+  - KP 5
+  - KP 6
+  - KP MULTIPLY
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - F11
   - F12
   - F13
   - F14
-  - RESET
-  - RESET
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  - F15
+  - KP 0
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP EQUAL
   - {t: ▽, type: trans}
   - BOOT
-  - {t: BASE, h: toggle}
+  - RESET
   - {type: held}
   - {type: held}
-  - {t: ▽, type: trans}
+  - RESET
   - BOOT
 combos:
 - {p: [36, 25], k: BT ←, l: [BASE]}

@@ -97,7 +97,8 @@ Brackets and media on the left, symbols on the right. The trackpad also scrolls 
 
 ## ALT
 
-Tri-layer: held automatically when NAV and SYM are both held. F1–F14, plus the firmware reset keys.
+Tri-layer: held automatically when NAV and SYM are both held. F1–F15 across the left half, the same
+`KP_*` numpad as GNUM on the right half, and the firmware reset keys on the thumbs.
 
 Reset keys live here because reaching ALT needs only the two thumb keys — no tap-dance — so they stay
 reachable even if the home-row behaviors misbehave:
@@ -106,10 +107,11 @@ reachable even if the home-row behaviors misbehave:
 |-----|---------|--------|
 | Outer thumb, left half (`TAB` on BASE) | `&bootloader` | Left half reboots into the UF2 bootloader and mounts as a USB drive — copy the `.uf2` in to flash. No physical reset button needed. |
 | Outer thumb, right half (`BSPC` on BASE) | `&bootloader` | Same for the right half. |
-| Innermost, bottom row, left half | `&sys_reset` | Soft-reboots the left half into the existing firmware. |
-| Innermost, bottom row, right half | `&sys_reset` | Soft-reboots the right half. |
+| Middle thumb, left half (`SPACE` on BASE) | `&sys_reset` | Soft-reboots the left half into the existing firmware. |
+| Middle thumb, right half (`RET` on BASE) | `&sys_reset` | Soft-reboots the right half. |
 
-Both inner thumbs are already held down to reach ALT, so press the outer thumb key with your index finger.
+Both inner thumbs are already held down to reach ALT, so press the outer or middle thumb key with your
+index finger.
 
 ZMK reset behaviors are source-specific: each key resets the half it physically sits on, which is why
 there is one per side. (Combos are the exception — a combo-triggered reset always hits the central half —
