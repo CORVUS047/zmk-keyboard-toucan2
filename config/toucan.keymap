@@ -131,13 +131,6 @@
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
         };
-        combo_res1 {
-            bindings = <&to 5>;
-            key-positions = <36 27>;   // TAB + C
-            layers = <BASE>;
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-        };
         combo_game {
             bindings = <&to 3>;
             key-positions = <36 28>;   // TAB + D
@@ -230,13 +223,19 @@
             >;
         };
 
-        extra_2 {
-            display-name = "RES1";
+        // Held for as long as a finger rests on the trackpad, by the
+        // is_touching_processor node in boards/shields/toucan/toucan.dtsi.
+        // Everything but the outer and middle thumbs is &trans: typing is
+        // unaffected, the inner thumbs still reach NAV/SYM so the listener's
+        // scroll override keeps working, and the thumbs that are left become
+        // mouse buttons, which is what makes click-and-drag work.
+        mouse {
+            display-name = "MOU";
             bindings = <
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                            &trans &trans &trans           &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
+                            &mkp RCLK &mkp LCLK &trans           &trans &mkp LCLK &mkp MCLK
             >;
         };
 

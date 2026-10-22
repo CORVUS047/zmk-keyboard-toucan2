@@ -64,7 +64,11 @@
         scroll-sensitivity = <100>;
 
         filter-settings=<0x0B>;
-        hold-time = <500>;
+        // press-and-hold only fires if the finger stays inside tap-distance for
+        // the whole hold-time, so 500ms with the hardware default distance was
+        // easy to miss. Shorter hold, more slack on the drift.
+        tap-distance = <100>;
+        hold-time = <300>;
 
         zoom;
         scroll;

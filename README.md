@@ -24,15 +24,15 @@ The outermost column on each half is `&trans` on every layer — those positions
 | 1 | NAV   | hold left inner thumb |
 | 2 | SYM   | hold right inner thumb |
 | 3 | GAME  | `TAB` + `D` combo |
-| 4 | GNUM  | hold left inner thumb while on GAME, or touch the trackpad |
-| 5 | RES1  | `TAB` + `C` combo (reserved, unmapped) |
+| 4 | GNUM  | hold left inner thumb while on GAME |
+| 5 | MOU   | held for as long as a finger rests on the trackpad |
 | 6 | RES2  | `TAB` + `H` combo (reserved, unmapped) |
 | 7 | RES3  | `TAB` + `,` combo (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
 Every key on the reserved layers, and the right half of ALT, is `&to 0` — a single tap gets you back to BASE
 (except the two ALT reset keys described below). GNUM is the exception: its right half is a numpad, so the
-escape there is the **right inner thumb**.
+escape there is the **right inner thumb**. MOU needs no escape — it is momentary, held by the trackpad.
 
 ## BASE
 
@@ -62,7 +62,6 @@ The layer jumps and Bluetooth controls moved to **combos** anchored on the left 
 |-------|--------|
 | `TAB` + `Z` | `BT ←` — previous Bluetooth profile |
 | `TAB` + `X` | `BT →` — next Bluetooth profile |
-| `TAB` + `C` | jump to RES1 |
 | `TAB` + `D` | jump to GAME |
 | `TAB` + `H` | jump to RES2 |
 | `TAB` + `,` | jump to RES3 |
@@ -70,10 +69,10 @@ The layer jumps and Bluetooth controls moved to **combos** anchored on the left 
 
 Each is `layers = <BASE>`, so none of them shadow a NAV, SYM or GAME binding. `timeout-ms = <50>` and
 `require-prior-idle-ms = <150>` keep them from firing during a fast roll, and `BT CLR` takes three keys
-because it is destructive. All seven share the `TAB` position, so
+because it is destructive. All six share the `TAB` position, so
 `CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY=7` is set in
 [boards/shields/toucan/toucan_left.conf](boards/shields/toucan/toucan_left.conf) and
-[toucan_right.conf](boards/shields/toucan/toucan_right.conf) — the default of 5 would silently drop two.
+[toucan_right.conf](boards/shields/toucan/toucan_right.conf) — the default of 5 would silently drop one.
 Tapping `TAB` on its own is unaffected: a combo candidate is released as a plain tap the moment the key
 comes up.
 
@@ -138,8 +137,7 @@ and triple-taps to `zz`.
 
 ## GNUM
 
-Numbers and paging for the GAME layer. Also activated for as long as a finger rests on the trackpad
-(the `is_touching_processor` node in [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi)).
+Numbers and paging for the GAME layer.
 
 Both halves carry digits, but they send **different scancodes**:
 
@@ -161,9 +159,31 @@ Tap the right inner thumb to return to BASE.
 
 ![GNUM layer](keymap-drawer/img/gnum.svg)
 
+## MOU
+
+Mouse buttons on the thumbs, held for as long as a finger rests on the trackpad (the
+`is_touching_processor` node in [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi)
+watches `INPUT_BTN_TOUCH` and holds `&mo 5`).
+
+| Thumb | Left half | Right half |
+|-------|-----------|------------|
+| outer (`TAB` / `BSPC` on BASE) | right click | middle click |
+| middle (`SPACE` / `RET` on BASE) | left click | left click |
+| inner (`NAV` / `SYM` on BASE) | `&trans` | `&trans` |
+
+Every other key is `&trans`, so resting a finger on the pad never changes what the letters type. The inner
+thumbs are deliberately left alone: they hold NAV and SYM, and the listener's `scroller` override is
+`layers = <1 2>`, so shadowing them with clicks would make the scroll gesture unreachable while a finger is
+on the pad.
+
+Holding a thumb and moving the finger is click-and-drag. The trackpad's own `press-and-hold` gesture drags
+too — the driver holds `INPUT_BTN_0` down for as long as the gesture stays asserted — but it only fires if
+the finger sits still inside `tap-distance` for the whole `hold-time`, both set on the `tps43_trackpad` node
+in [toucan_right.overlay](boards/shields/toucan/toucan_right.overlay).
+
 ## Reserved layers
 
-RES1/RES2/RES3 are empty placeholders, reachable with the `TAB` + `C`, `TAB` + `H` and `TAB` + `,` combos.
+RES2/RES3 are empty placeholders, reachable with the `TAB` + `H` and `TAB` + `,` combos.
 
 ![Reserved layers](keymap-drawer/img/reserved.svg)
 

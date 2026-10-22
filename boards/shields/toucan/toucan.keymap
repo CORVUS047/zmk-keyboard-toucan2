@@ -61,18 +61,18 @@
             >;
         };
 
+        extra_1 {
+                status = "reserved";
+        };
+
         mouse {
             display-name = "MOU";
             bindings = <
                 &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
                 &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
                 &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                            &mkp MCLK &mkp LCLK &mkp RCLK           &mkp LCLK &mkp RCLK &mkp MCLK
+                            &mkp RCLK &mkp LCLK &trans           &trans &mkp LCLK &mkp MCLK
             >;
-        };
-
-        extra_2 {
-                status = "reserved";
         };
 
         extra_3 {

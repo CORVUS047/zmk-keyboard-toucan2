@@ -220,42 +220,7 @@ layers:
   - {t: BASE, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  RES1:
-  - {t: ▽, type: trans}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
-  - {t: BASE, h: toggle}
+  MOU:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -263,6 +228,41 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: RIGHT, type: held}
+  - {t: LEFT, type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: LEFT, type: held}
+  - {t: MID, type: held}
   RES2:
   - {t: ▽, type: trans}
   - {t: BASE, h: toggle}
@@ -395,7 +395,6 @@ layers:
 combos:
 - {p: [36, 25], k: BT ←, l: [BASE]}
 - {p: [36, 26], k: BT →, l: [BASE]}
-- {p: [36, 27], k: RES1, l: [BASE]}
 - {p: [36, 28], k: GAME, l: [BASE]}
 - {p: [36, 31], k: RES2, l: [BASE]}
 - {p: [36, 32], k: RES3, l: [BASE]}
