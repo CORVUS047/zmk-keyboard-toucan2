@@ -109,6 +109,19 @@
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
+        // Shift gets its own hold-tap: no require-prior-idle-ms, so grabbing
+        // shift right after a keystroke still shifts. "balanced" keeps typing
+        // rolls safe -- a hold only resolves if the other key is pressed AND
+        // released while this key is still held, which never happens in a
+        // roll (the roll releases this key first).
+        hrms: home_row_mod_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     combos {
@@ -177,7 +190,7 @@
             display-name = "BASE";
             bindings = <
                 &trans   &kp Q         &kp W          &kp F         &kp P           &kp B      &kp J  &kp L           &kp U         &kp Y          &kp SEMI      &trans
-                &trans   &hrm LGUI A   &hrm LCTRL R   &hrm LALT S   &hrm LSHIFT T   &kp G      &kp M  &hrm RSHIFT N   &hrm RALT E   &hrm RCTRL I   &hrm RGUI O   &trans
+                &trans   &hrm LGUI A   &hrm LCTRL R   &hrm LALT S   &hrms LSHIFT T   &kp G      &kp M  &hrms RSHIFT N   &hrm RALT E   &hrm RCTRL I   &hrm RGUI O   &trans
                 &trans   &kp Z         &kp X          &kp C         &kp D           &kp V      &kp K  &kp H           &kp COMMA     &kp DOT        &kp FSLH      &trans
                                 &kp TAB &kp SPACE &mo 1   &mo 2 &kp RET &kp BSPC
             >;
