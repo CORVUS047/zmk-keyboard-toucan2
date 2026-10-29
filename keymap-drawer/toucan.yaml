@@ -136,7 +136,7 @@ layers:
   - BSPC
   GAME:
   - {t: ▽, type: trans}
-  - {t: F, h: 3✕ tt, s: 2✕ T}
+  - F
   - Q
   - W
   - E
@@ -161,7 +161,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - LCTRL
-  - {t: X, h: 3✕ zz, s: 2✕ Z}
+  - X
   - C
   - V
   - B
@@ -174,7 +174,7 @@ layers:
   - TAB
   - SPACE
   - GNUM
-  - SYM
+  - BASE
   - RET
   - BSPC
   GNUM:

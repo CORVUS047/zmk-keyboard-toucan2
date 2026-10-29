@@ -14,7 +14,7 @@ draw six phantom keys down the outer edges. Don't bind anything there; it is unr
 Images below are generated from [config/toucan.keymap](config/toucan.keymap) with
 [keymap-drawer](https://github.com/caksoylar/keymap-drawer) — see [Regenerating the keymap images](#regenerating-the-keymap-images).
 
-Legend per key: center = tap, bottom = hold, top = triple-tap (`3✕`) on BASE, double-tap (`2✕`) on GAME.
+Legend per key: center = tap, bottom = hold, top = triple-tap (`3✕`) on BASE.
 A double-tap on BASE just types the letter twice.
 The outermost column on each half is `&trans` on every layer — those positions have no switch.
 
@@ -130,8 +130,9 @@ tap-dance `tapping-term-ms` are compile-time devicetree values.
 ## GAME
 
 QWERTY with the mods moved off the home row and onto the pinky column, so WASD-style play works
-without hold-taps firing. `F` double-taps to `T` and triple-taps to `tt`; `X` double-taps to `Z`
-and triple-taps to `zz`.
+without hold-taps firing. No tap-dances, so every key fires on press. The right inner thumb is a
+momentary BASE: holding it turns GAME off until released (a plain `&mo 0` would do nothing, since BASE
+sits under GAME), which also means SYM is not reachable from GAME.
 
 ![GAME layer](keymap-drawer/img/game.svg)
 

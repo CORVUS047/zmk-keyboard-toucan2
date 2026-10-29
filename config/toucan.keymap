@@ -31,15 +31,12 @@
             #binding-cells = <0>;
             bindings = <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_tap &kp V>, <&macro_release &kp RCTRL>, <&macro_release &kp RSHIFT>;
         };
-        t_t: t_t {
+        // Momentary BASE for the GAME layer. BASE sits under GAME, so a plain
+        // &mo 0 would change nothing; this turns GAME off while held instead.
+        mo_base: mo_base {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp T>, <&macro_tap &kp T>;
-        };
-        z_z: z_z {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp Z>, <&macro_tap &kp Z>;
+            bindings = <&macro_tap &tog 3>, <&macro_pause_for_release>, <&macro_tap &tog 3>;
         };
         a_a: a_a {
             compatible = "zmk,behavior-macro";
@@ -64,18 +61,6 @@
     };
 
     behaviors {
-        td8: tap_dance_8 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp F>, <&kp T>, <&t_t>;
-        };
-        td9: tap_dance_9 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp X>, <&kp Z>, <&z_z>;
-        };
         td10: tap_dance_10 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -219,10 +204,10 @@
         game {
             display-name = "GAME";
             bindings = <
-                &trans  &td8       &kp Q &kp W &kp E &kp R     &kp Y  &kp U  &kp I      &kp O   &kp P     &trans
+                &trans  &kp F      &kp Q &kp W &kp E &kp R     &kp Y  &kp U  &kp I      &kp O   &kp P     &trans
                 &trans  &kp LSHIFT &kp A &kp S &kp D &kp G     &kp H  &kp J  &kp K      &kp L   &kp SEMI  &trans
-                &trans  &kp LCTRL  &td9  &kp C &kp V &kp B     &kp N  &kp M  &kp COMMA  &kp DOT &kp FSLH  &trans
-                                &kp TAB &kp SPACE &mo 4   &mo 2 &kp RET &kp BSPC
+                &trans  &kp LCTRL  &kp X &kp C &kp V &kp B     &kp N  &kp M  &kp COMMA  &kp DOT &kp FSLH  &trans
+                                &kp TAB &kp SPACE &mo 4   &mo_base &kp RET &kp BSPC
             >;
         };
 
