@@ -201,7 +201,7 @@ keymap parse -z config/toucan.keymap
 for layer in BASE NAV SYM ALT GAME GNUM; do
     keymap draw keymap-drawer/toucan.yaml -s "$layer" -o "keymap-drawer/img/$(echo "$layer" | tr 'A-Z' 'a-z').svg"
 done
-keymap draw keymap-drawer/toucan.yaml -s RES1 RES2 RES3 -o keymap-drawer/img/reserved.svg
+keymap draw keymap-drawer/toucan.yaml -s RES2 RES3 -o keymap-drawer/img/reserved.svg
 ```
 
 `keymap parse` renders tap-dances as raw `&tdN` references; [keymap-drawer/toucan.yaml](keymap-drawer/toucan.yaml)
