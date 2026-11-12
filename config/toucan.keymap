@@ -8,6 +8,7 @@
 #define NAV  1
 #define SYM  2
 #define ALT  3
+#define JP   6
 
 / {
     macros {
@@ -52,6 +53,21 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap &kp O>, <&macro_tap &kp O>;
+        };
+        // Japanese mode. Entering sends Henkan, leaving sends Muhenkan; the
+        // host IME framework (fcitx5 + Mozc) maps those to "activate" and
+        // "deactivate", so the JP layer and the IME stay in step. Both are
+        // explicit on/off rather than toggles: if they ever drift apart, one
+        // more TAB + H puts them back in agreement.
+        jp_on: jp_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp INT_HENKAN>, <&macro_tap &to JP>;
+        };
+        jp_off: jp_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp INT_MUHENKAN>, <&macro_tap &to BASE>;
         };
         semi_semi: semi_semi {
             compatible = "zmk,behavior-macro";
@@ -136,10 +152,19 @@
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
         };
-        combo_res2 {
-            bindings = <&to 6>;
+        combo_jp_on {
+            bindings = <&jp_on>;
             key-positions = <36 31>;   // TAB + H
             layers = <BASE>;
+            timeout-ms = <50>;
+            require-prior-idle-ms = <150>;
+        };
+        // Same chord on JP leaves it. Only one of the pair is ever live,
+        // since each is limited to its own layer.
+        combo_jp_off {
+            bindings = <&jp_off>;
+            key-positions = <36 31>;   // TAB + H
+            layers = <JP>;
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
         };
@@ -237,12 +262,18 @@
             >;
         };
 
-        extra_3 {
-            display-name = "RES2";
+        // Japanese mode, entered and left with TAB + H (see jp_on / jp_off).
+        // Every key is &trans: romaji is typed on BASE as usual and NAV, SYM,
+        // ALT and the trackpad clicks all still reach through. The layer
+        // exists so the status screen reads "JP" while the IME should be on,
+        // and so the exit combo has a layer of its own. Do not bind keys
+        // here: layer 6 sits above NAV and SYM and would shadow them.
+        jp {
+            display-name = "JP";
             bindings = <
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
-                &trans &to 0 &to 0 &to 0 &to 0 &to 0          &to 0 &to 0 &to 0 &to 0 &to 0 &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans          &trans &trans &trans &trans &trans &trans
                             &trans &trans &trans           &trans &trans &trans
             >;
         };

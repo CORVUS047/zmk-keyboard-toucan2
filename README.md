@@ -26,13 +26,14 @@ The outermost column on each half is `&trans` on every layer — those positions
 | 3 | GAME  | `TAB` + `D` combo |
 | 4 | GNUM  | hold left inner thumb while on GAME |
 | 5 | MOU   | held for as long as a finger rests on the trackpad |
-| 6 | RES2  | `TAB` + `H` combo (reserved, unmapped) |
+| 6 | JP    | `TAB` + `H` combo toggles Japanese mode (see [JP](#jp)) |
 | 7 | RES3  | `TAB` + `,` combo (reserved, unmapped) |
 | 8 | ALT   | hold both inner thumbs (NAV + SYM tri-layer) |
 
-Every key on the reserved layers, and the right half of ALT, is `&to 0` — a single tap gets you back to BASE
+Every key on RES3, and the right half of ALT, is `&to 0` — a single tap gets you back to BASE
 (except the two ALT reset keys described below). GNUM is the exception: its right half is a numpad, so the
 escape there is the **right inner thumb**. MOU needs no escape — it is momentary, held by the trackpad.
+JP is left the same way it was entered, with `TAB` + `H`.
 
 ## BASE
 
@@ -63,13 +64,14 @@ The layer jumps and Bluetooth controls moved to **combos** anchored on the left 
 | `TAB` + `Z` | `BT ←` — previous Bluetooth profile |
 | `TAB` + `X` | `BT →` — next Bluetooth profile |
 | `TAB` + `D` | jump to GAME |
-| `TAB` + `H` | jump to RES2 |
+| `TAB` + `H` | Japanese mode on — sends `Henkan` and jumps to JP. The same chord on JP turns it off again. |
 | `TAB` + `,` | jump to RES3 |
 | `TAB` + `.` + `/` | `BT CLR` — unpairs the current profile |
 
-Each is `layers = <BASE>`, so none of them shadow a NAV, SYM or GAME binding. `timeout-ms = <50>` and
+Each is `layers = <BASE>`, so none of them shadow a NAV, SYM or GAME binding (the JP-mode exit is the one
+combo on another layer, `layers = <JP>`). `timeout-ms = <50>` and
 `require-prior-idle-ms = <150>` keep them from firing during a fast roll, and `BT CLR` takes three keys
-because it is destructive. All six share the `TAB` position, so
+because it is destructive. Seven combos share the `TAB` position — the six above plus the JP-mode exit — so
 `CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY=7` is set in
 [boards/shields/toucan/toucan_left.conf](boards/shields/toucan/toucan_left.conf) and
 [toucan_right.conf](boards/shields/toucan/toucan_right.conf) — the default of 5 would silently drop one.
@@ -182,11 +184,46 @@ too — the driver holds `INPUT_BTN_0` down for as long as the gesture stays ass
 the finger sits still inside `tap-distance` for the whole `hold-time`, both set on the `tps43_trackpad` node
 in [toucan_right.overlay](boards/shields/toucan/toucan_right.overlay).
 
+## JP
+
+Japanese mode, for typing Japanese through [Mozc](https://github.com/google/mozc) on Linux. Romaji is typed
+on the normal Colemak letters; the layer exists to keep the keyboard and the host IME in step:
+
+| Chord | Where | Sends | Then |
+|-------|-------|-------|------|
+| `TAB` + `H` | BASE | `INT_HENKAN` (Linux keysym `Henkan`) | jumps to JP |
+| `TAB` + `H` | JP | `INT_MUHENKAN` (Linux keysym `Muhenkan`) | back to BASE |
+
+Every key on JP is `&trans`, so letters, NAV, SYM, ALT and the trackpad clicks all behave exactly as on
+BASE. The status screen shows `JP` for as long as Japanese input should be on. The two keys are explicit
+on/off rather than a toggle, so if the IME and the layer ever disagree (the IME was switched with the mouse,
+say), one more `TAB` + `H` resynchronises them. The BASE combos (Bluetooth, GAME, RES3) don't fire while on
+JP — leave JP first.
+
+Don't bind keys on JP. It is layer 6, above NAV (1) and SYM (2), so anything bound there would shadow the
+NAV/SYM key in that position while Japanese mode is on.
+
+Everything else Japanese input needs is already on the board. With the IME on and the host layout set to US,
+`-` `[` `]` `,` `.` `/` type ー 「 」 、 。 ・, and `F6`–`F10` (ALT, left home row) re-convert the word being
+composed to hiragana / full-width katakana / half-width katakana / full-width romaji / half-width romaji.
+
+**Host setup.** Mozc needs an input method framework — fcitx5 with `fcitx5-mozc` (on Gentoo,
+`app-i18n/mozc` with `USE=fcitx5`) or IBus with `ibus-mozc`. Keep the host keyboard layout on **US**: on a
+JIS layout the same scancodes print different symbols (`⇧2` gives `"`, not `@`) and the SYM layer would be
+wrong. Then point the framework's on/off keys at what the keyboard sends — in fcitx5, *Global Options →
+Activate Input Method* = `Henkan` and *Deactivate Input Method* = `Muhenkan`. Check what arrives with `wev`
+(Wayland) or `xev` (X11).
+
+The Mac かな/英数 keys (`LANG1`/`LANG2`) are not used: Linux maps them to the Korean `Hangul` / `Hangul_Hanja`
+keys. `Zenkaku_Hankaku` (`LANG5`) has no keysym on a US layout, and `ろ`/`¥` (`INT1`/`INT3`) only exist on JIS.
+`Henkan`/`Muhenkan` are above usage `0x67`, so they need the default HKRO report — if NKRO is ever enabled,
+set `CONFIG_ZMK_HID_KEYBOARD_NKRO_EXTENDED_REPORT=y` as well.
+
 ## Reserved layers
 
-RES2/RES3 are empty placeholders, reachable with the `TAB` + `H` and `TAB` + `,` combos.
+RES3 is an empty placeholder, reachable with the `TAB` + `,` combo.
 
-![Reserved layers](keymap-drawer/img/reserved.svg)
+![Reserved layer](keymap-drawer/img/reserved.svg)
 
 ## Regenerating the keymap images
 
@@ -201,7 +238,7 @@ keymap parse -z config/toucan.keymap
 for layer in BASE NAV SYM ALT GAME GNUM; do
     keymap draw keymap-drawer/toucan.yaml -s "$layer" -o "keymap-drawer/img/$(echo "$layer" | tr 'A-Z' 'a-z').svg"
 done
-keymap draw keymap-drawer/toucan.yaml -s RES2 RES3 -o keymap-drawer/img/reserved.svg
+keymap draw keymap-drawer/toucan.yaml -s RES3 -o keymap-drawer/img/reserved.svg
 ```
 
 `keymap parse` renders tap-dances as raw `&tdN` references; [keymap-drawer/toucan.yaml](keymap-drawer/toucan.yaml)
