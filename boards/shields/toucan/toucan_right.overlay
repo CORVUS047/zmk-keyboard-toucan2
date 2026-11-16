@@ -58,7 +58,15 @@
         enable-power-management;
         // idle-sleep; // provides maximal power savings but when ZMK is idle (i.e. you haven't used keyboard in 30secs) the touchpad will not work.  not recommended.
         // timeout-lp1 = <3>; // 60s timeout before entering lp2 state (20 secs per unit) (default was 20s)
-        report-rate-lp2 = <640>; // 640ms report rate in LP2 state means 55uA draw rather than default 160ms 174uA draw
+        // Keep the pad responsive for as long as ZMK is awake: the chip's own
+        // idle -> LP1 -> LP2 ladder slowed scanning to 640ms, which is the lag
+        // on first touch. 255 = never leave idle mode, and the LP rates match
+        // active anyway in case it does. Costs ~2-3mA vs ~55uA in LP2; the pad
+        // still suspends when ZMK deep-sleeps (CONFIG_ZMK_IDLE_SLEEP_TIMEOUT).
+        timeout-idle = <255>;
+        report-rate-idle = <10>;
+        report-rate-lp1 = <10>;
+        report-rate-lp2 = <10>;
         scroll-angle = <30>; // The default angle (about 47 deg) is too big on toucan2 I think
         sensitivity = <100>;
         scroll-sensitivity = <100>;
